@@ -18,7 +18,7 @@ router.post('/', function (req, res) {
     sender = event.sender.id;
     if (event.message && event.message.text) {
       text = event.message.text;
-      console.log("El mensaje es : " + text.substring(0, 200));
+      console.log("El mensaje es : " + text.substring(0, 200) + "El que lo envia es:" + sender);
     }
   }
   res.sendStatus(200);
