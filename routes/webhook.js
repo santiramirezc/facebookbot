@@ -11,13 +11,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function (req, res) {
+  console.log("Llego un mensaje al webhook")
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
     if (event.message && event.message.text) {
       text = event.message.text;
-      sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+      console.log("El mensaje es : " + text.substring(0, 200));
     }
   }
   res.sendStatus(200);
