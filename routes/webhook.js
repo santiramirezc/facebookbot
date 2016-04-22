@@ -19,6 +19,7 @@ router.post('/', function (req, res) {
     if (event.message && event.message.text) {
       text = event.message.text;
       console.log("El mensaje es : " + text.substring(0, 200) + "El que lo envia es:" + sender);
+      sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
     }
   }
   res.sendStatus(200);
@@ -26,6 +27,7 @@ router.post('/', function (req, res) {
 
 
 function sendTextMessage(sender, text) {
+    console.log("Intentando enviar mensaje");
   messageData = {
     text:text
   }
