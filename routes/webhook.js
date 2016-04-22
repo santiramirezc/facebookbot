@@ -3,10 +3,16 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  if (req.query['hub.verify_token'] === 'CAAOkHhWLZBL0BAD2ViYVXR5PhJrdFatLG306yirHopiQviUZCR0lQUBaJp0XM3U2TR6yo6r6THNVxknl36Vq4dTudQRUtD42ctp5SnoHMSW1kZAg1ZCOevpPnttAY3P0setfx0Nr0sCkjTQuZBP2ZBHPYm358TZBZAyOREcDiPLUFKZAtMhimHpnpMfsHPvo8mSUZD') {
-    res.send(req.query['hub.challenge']);
+  messaging_events = req.body.entry[0].messaging;
+  for (i = 0; i < messaging_events.length; i++) {
+    event = req.body.entry[0].messaging[i];
+    sender = event.sender.id;
+    if (event.message && event.message.text) {
+      text = event.message.text;
+      // Handle a text message from this sender
+    }
   }
-  res.send('Error, wrong validation token');
+  res.sendStatus(200);
 });
 
 module.exports = router;
