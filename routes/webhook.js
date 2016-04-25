@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
         }
         if (event.postback) {
             text = JSON.stringify(event.postback);
-            sendTextMessage(sender, text);
+            sendTextMessage(sender, event.postback.payload);
             continue;
         }
     }
@@ -49,7 +49,7 @@ function sendGenericMessage(sender) {
           }, {
             "type": "postback",
             "title": "Recordar",
-            "payload": "Payload for first element in a generic bubble",
+            "payload": "recordar",
           }],
         },{
           "title": "Second card",
