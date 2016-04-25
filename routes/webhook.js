@@ -24,8 +24,11 @@ router.post('/', function (req, res) {
             sendGenericMessage(sender);
         }
         if (event.postback) {
-            text = JSON.stringify(event.postback);
-            sendTextMessage(sender, event.postback.payload);
+            if(event.postback.payload == "recordar"){
+                sendTextMessage(sender, "Bien, te recordaré cuando halla un video nuevo");    
+            }
+            //text = JSON.stringify(event.postback);
+            //sendTextMessage(sender, event.postback.payload);
             continue;
         }
     }
