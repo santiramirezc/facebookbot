@@ -19,6 +19,7 @@ router.post('/', function (req, res) {
         sender = event.sender.id;
         if (event.message && event.message.text) {
             text = event.message.text;
+            text.toLowerCase();
             if(text == "hola"){
                 sendTextMessage(sender, "Hola");    
             }
@@ -109,5 +110,6 @@ function sendTextMessage(sender, text) {
     }
   });
 }
+
 
 module.exports = router;
