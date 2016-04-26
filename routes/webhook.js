@@ -19,9 +19,13 @@ router.post('/', function (req, res) {
         sender = event.sender.id;
         if (event.message && event.message.text) {
             text = event.message.text;
-            console.log("El mensaje es : " + text.substring(0, 200) + "El que lo envia es:" + sender);
+            if(text == "hola"){
+                sendTextMessage(sender, "Hola");    
+            }
+            else{
+                sendGenericMessage(sender);
+            }
             //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
-            sendGenericMessage(sender);
         }
         if (event.postback) {
             if(event.postback.payload == "recordar"){
