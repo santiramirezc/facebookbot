@@ -20,8 +20,7 @@ router.post('/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text;
             text = text.toLowerCase();
-            if(text == "hola"){sendTextMessage(sender, "Hola")}
-            if(text == "como estas"){sendTextMessage(sender, "Bien ¿Y tu?")}
+            if(text == "hola" | text == "ola" ){sendTextMessage(sender, "Hola")}
             else{
                 sendGenericMessage(sender);
             }
