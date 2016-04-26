@@ -20,6 +20,7 @@ router.post('/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text;
             text.toLowerCase();
+            console.log("El texto enviado es: " + text);
             if(text == "hola"){
                 sendTextMessage(sender, "Hola");    
             }
