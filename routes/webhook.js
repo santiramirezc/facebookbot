@@ -2,7 +2,7 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-var token = "CAAOkHhWLZBL0BAL4NcsGntcBul2S1w0ZBj5u9sNJ7JQoX8ZB18STaw66E4zSHL3R6vbAoWPXqxapuQjQ6Yni2ZAulupxrLpSZA5dbDVGh6hNuXfqcMneZBing1HvmWCmmOxOewaDWPJ98siMVlgDj8xVoLlXZB1tpDqHzUzD5GVOfPXFkbSkMVjNo67moPrTZCwZD";
+var token = "EAAOkHhWLZBL0BAPXc283VRMQdJ2EZB9T7qLjLdEzmAZCOOvCh3ZBVNLk60UbYggp3ESWNzie6M04clzzVZAcTSKHsr4SsB4GtCZAZCeHZCWWCIo3iuvWdrZBmiGrICVt1PzCuaoCnC3QlbE1pYFhx0lx34Qc86BVmgiuOxRvStHoBowZDZD";
 
 router.get('/', function(req, res, next) {
     if (req.query['hub.verify_token'] === '<validation_token>') {
@@ -21,6 +21,7 @@ router.post('/', function (req, res) {
             text = event.message.text;
             text = text.toLowerCase();
             if(text == "hola" | text == "ola" ){sendTextMessage(sender, "Hola")}
+            if(text == "hi" ){sendTextMessage(sender, "Hi there.")}
             else{
                 sendGenericMessage(sender);
             }
@@ -94,7 +95,7 @@ function sendTextMessage(sender, text) {
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:"CAAOkHhWLZBL0BAL4NcsGntcBul2S1w0ZBj5u9sNJ7JQoX8ZB18STaw66E4zSHL3R6vbAoWPXqxapuQjQ6Yni2ZAulupxrLpSZA5dbDVGh6hNuXfqcMneZBing1HvmWCmmOxOewaDWPJ98siMVlgDj8xVoLlXZB1tpDqHzUzD5GVOfPXFkbSkMVjNo67moPrTZCwZD"},
+    qs: {access_token:token},
     method: 'POST',
     json: {
       recipient: {id:sender},
