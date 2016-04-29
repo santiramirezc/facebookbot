@@ -21,7 +21,7 @@ router.post('/', function (req, res) {
             text = event.message.text;
             text = text.toLowerCase();
             if(text == "hola" | text == "ola" ){sendTextMessage(sender, "Hola")}
-            if(text == "hi" ){sendTextMessage(sender, "Hi there.")}
+            if(text == "hi" ){sendTextMessage(sender, "Hi there.");sendGenericMessageBike(sender)}
             else{
                 sendGenericMessage(sender);
             }
@@ -38,6 +38,59 @@ router.post('/', function (req, res) {
     }
     res.sendStatus(200);
 });
+
+function sendGenericMessageBike(sender){
+  messageData = {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "generic",
+        "elements": [{
+          "title": "Super Fast Bike",
+          "subtitle": "With this bike you will fly",
+          "image_url": "https://static.pexels.com/photos/59904/pexels-photo-59904-large.jpeg",
+          "buttons": [{
+            "type": "web_url",
+            "url": "https://www.messenger.com/",
+            "title": "Buy this one"
+          }, {
+            "type": "postback",
+            "title": "I don't like this one",
+            "payload": "recordar",
+          }],
+        },{
+          "title": "Super Montain Bike",
+          "subtitle": "You will get to the top of the Everest with this bike",
+          "image_url": "https://static.pexels.com/photos/24846/pexels-photo-24846-large.jpg",
+          "buttons": [{
+            "type": "web_url",
+            "url": "https://www.messenger.com/",
+            "title": "Buy this one"
+          }, {
+            "type": "postback",
+            "title": "I don't like this one",
+            "payload": "recordar",
+          }],
+        }]
+      }
+    }
+  };
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {access_token:token},
+    method: 'POST',
+    json: {
+      recipient: {id:sender},
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+}
 
 function sendGenericMessage(sender) {
   messageData = {
