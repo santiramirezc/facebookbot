@@ -37,7 +37,7 @@ router.post('/', function (req, res) {
         }
         if (event.postback) {
             if(event.postback.payload == "recordar"){
-                sendTextMessage(sender, "Bien, te recordaré cuando halla un video nuevo");    
+                sendTextMessage(sender, "You are making one of the best choices of your life, tell me where to send it.");    
             }
             //text = JSON.stringify(event.postback);
             //sendTextMessage(sender, event.postback.payload);
