@@ -60,10 +60,10 @@ function sendGenericMessageBike(sender){
           "buttons": [{
             "type": "web_url",
             "url": "https://www.messenger.com/",
-            "title": "Buy this one"
+            "title": "See more"
           }, {
             "type": "postback",
-            "title": "Another please",
+            "title": "Buy this one",
             "payload": "recordar",
           }],
         },{
@@ -73,10 +73,10 @@ function sendGenericMessageBike(sender){
           "buttons": [{
             "type": "web_url",
             "url": "https://www.messenger.com/",
-            "title": "Buy this one"
+            "title": "See more"
           }, {
             "type": "postback",
-            "title": "Another please",
+            "title": "Buy this one",
             "payload": "recordar",
           }],
         }]
