@@ -20,16 +20,20 @@ router.post('/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text;
             text = text.toLowerCase();
-            if(text == "hola" | text == "ola" ){sendTextMessage(sender, "Hola")}
+            
+            if(text == "hola" | text == "ola" ){
+                sendTextMessage(sender, "Hola");
+            }
             if(text == "hi" ){
                 sendTextMessage(sender, "Hi there. Look at this bikes:");
                 sendGenericMessageBike(sender);
             }
-            if(text == "bye" ){sendTextMessage(sender, "Bye, hope to chat soon.");}
+            if(text == "bye" ){
+                sendTextMessage(sender, "Bye, hope to chat soon.");
+            }
             else{
                 sendGenericMessage(sender);
             }
-            //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
         }
         if (event.postback) {
             if(event.postback.payload == "recordar"){
