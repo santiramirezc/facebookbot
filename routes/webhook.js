@@ -21,7 +21,7 @@ router.post('/', function (req, res) {
             text = event.message.text;
             text = text.toLowerCase();
             if(text == "hola" | text == "ola" ){sendTextMessage(sender, "Hola")}
-            if(text == "hi" ){sendTextMessage(sender, "Hi there.");sendGenericMessageBike(sender)}
+            if(text == "hi" ){sendTextMessage(sender, "Hi there.");sendTextMessage(sender, "Look this bikes");sendGenericMessageBike(sender)}
             else{
                 sendGenericMessage(sender);
             }
@@ -55,7 +55,7 @@ function sendGenericMessageBike(sender){
             "title": "Buy this one"
           }, {
             "type": "postback",
-            "title": "I don't like this one",
+            "title": "Another please",
             "payload": "recordar",
           }],
         },{
@@ -68,7 +68,7 @@ function sendGenericMessageBike(sender){
             "title": "Buy this one"
           }, {
             "type": "postback",
-            "title": "I don't like this one",
+            "title": "Another please",
             "payload": "recordar",
           }],
         }]
