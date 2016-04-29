@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
                 sendTextMessage(sender, "Bye, hope to chat soon.");
             }
             else{
-                sendGenericMessage(sender);
+                //sendGenericMessage(sender);
             }
         }
         if (event.postback) {
